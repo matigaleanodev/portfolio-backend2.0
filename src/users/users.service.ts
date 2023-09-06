@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@Nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
@@ -12,7 +12,17 @@ export class UsersService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
-  createUser(user: CreateUserDTO) {
+  async createUser(user: CreateUserDTO) {
+    const foundUser = await this.userRepository.findOne({
+      where: {
+        username: user.username,
+      },
+    });
+
+    if (foundUser) {
+      return new HttpException('User already exist', HttpStatus.CONFLICT);
+    }
+
     const newUser = this.userRepository.create(user);
     return this.userRepository.save(newUser);
   }
@@ -21,19 +31,45 @@ export class UsersService {
     return this.userRepository.find();
   }
 
-  getUser(id: number) {
-    return this.userRepository.findOne({
+  async getUser(id: number) {
+    const foundUser = await this.userRepository.findOne({
       where: {
         id,
       },
     });
+
+    if (foundUser) {
+      return foundUser;
+    } else {
+      return new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
   }
 
-  deleteUser(id: number) {
-    return this.userRepository.delete({ id });
+  async deleteUser(id: number) {
+    const foundUser = await this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (foundUser) {
+      return this.userRepository.delete(foundUser);
+    } else {
+      return new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
   }
 
-  updateUser(id: number, user: UpdateUserDTO) {
-    this.userRepository.update({ id }, user);
+  async updateUser(id: number, user: UpdateUserDTO) {
+    const foundUser = await this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (foundUser) {
+      return this.userRepository.update({ id }, user);
+    } else {
+      return new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
   }
 }

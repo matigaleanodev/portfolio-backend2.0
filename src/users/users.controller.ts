@@ -19,7 +19,7 @@ export class UsersController {
   constructor(private service: UsersService) {}
 
   @Post()
-  createUser(@Body() newUser: CreateUserDTO): Promise<User> {
+  createUser(@Body() newUser: CreateUserDTO) {
     return this.service.createUser(newUser);
   }
 
@@ -29,7 +29,7 @@ export class UsersController {
   }
 
   @Get(':id')
-  getUser(@Param('id', ParseIntPipe) id: number): Promise<User | null> {
+  getUser(@Param('id', ParseIntPipe) id: number) {
     return this.service.getUser(id);
   }
 
