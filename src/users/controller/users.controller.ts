@@ -38,29 +38,34 @@ export class UsersController {
     );
   }
 
+  //Rest call: /api/users/register
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('register')
   createUser(@Body() newUser: CreateUserDTO): Observable<UserInterface> {
     return this.service.createUser(newUser);
   }
 
+  //Rest call: /api/users
   @Get()
   getUsers(): Promise<UserEntity[]> {
     return this.service.getUsers();
   }
 
+  //Rest call: /api/users/{id}
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   getUser(@Param('id', ParseIntPipe) id: number) {
     return this.service.getUser(id);
   }
 
+  //Rest call: /api/users/{id}
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   deleteUser(@Param('id', ParseIntPipe) id: number) {
     return this.service.deleteUser(id);
   }
 
+  //Rest call: /api/users/{id}
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   updateUser(
