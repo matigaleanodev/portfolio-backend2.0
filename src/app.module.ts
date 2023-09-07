@@ -4,11 +4,14 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@Nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 dotenv.config();
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
@@ -20,6 +23,7 @@ dotenv.config();
       synchronize: true,
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
