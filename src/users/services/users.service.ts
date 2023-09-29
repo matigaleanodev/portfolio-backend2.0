@@ -74,8 +74,8 @@ export class UsersService {
     );
   }
 
-  getUsers() {
-    return this.userRepository.find();
+  getUsers(): Observable<UserEntity[]> {
+    return from(this.userRepository.find());
   }
 
   getUser(id: number): Observable<UserEntity | null> {

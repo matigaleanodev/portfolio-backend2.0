@@ -47,7 +47,7 @@ export class UsersController {
 
   //Rest call: /api/users
   @Get()
-  getUsers(): Promise<UserEntity[]> {
+  getUsers(): Observable<UserEntity[]> {
     return this.service.getUsers();
   }
 

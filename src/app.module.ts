@@ -6,6 +6,7 @@ import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@Nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ContactModule } from './contact/contact.module';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ dotenv.config();
     }),
     UsersModule,
     AuthModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],
