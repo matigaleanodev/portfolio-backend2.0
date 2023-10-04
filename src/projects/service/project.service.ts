@@ -23,7 +23,7 @@ export class ProjectService {
     return from(this.projectRepository.find());
   }
 
-  async getProjectById(id: number) {
+  async getProjectById(id: number): Promise<ProjectInterface | HttpException> {
     const foundProject = await this.projectRepository.findOne({
       where: { id },
     });
