@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateContactDTO {
   @IsString()
@@ -9,5 +9,6 @@ export class CreateContactDTO {
   email: string;
 
   @IsString()
+  @IsNotEmpty()
   message: string;
 }
