@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
-export class CreateProjectDTO {
+export class CreateSoftSkillDTO {
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -12,16 +12,4 @@ export class CreateProjectDTO {
   @IsUrl()
   @IsNotEmpty()
   image: string;
-
-  @IsUrl()
-  @IsNotEmpty()
-  frontUrl: string;
-
-  @IsUrl()
-  @IsNotEmpty()
-  backUrl: string;
-
-  @IsUrl()
-  @IsNotEmpty()
-  demoUrl: string;
 }

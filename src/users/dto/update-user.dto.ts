@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-export class UpdateUserDTO {
-  email?: string;
-  password?: string;
-}
+import { LoginUserDTO } from './login-user.dto';
+
+export type UpdateUserDTO = Partial<LoginUserDTO>;
