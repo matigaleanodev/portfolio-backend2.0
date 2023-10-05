@@ -25,13 +25,15 @@ export class ProjectController {
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() project: CreateProjectDTO): Observable<ProjectEntity> {
-    return this.service.createProject(project);
+    const result = this.service.createProject(project);
+    return result;
   }
 
   //Rest call: /api/project
   @Get()
   getProjects(): Observable<ProjectEntity[]> {
-    return this.service.getProjects();
+    const result = this.service.getProjects();
+    return result;
   }
 
   //Rest call: /api/project/{id}
@@ -40,7 +42,8 @@ export class ProjectController {
   delete(
     @Param('id', ParseIntPipe) id: number,
   ): Observable<ProjectEntity | HttpException> {
-    return this.service.deleteProject(id);
+    const result = this.service.deleteProject(id);
+    return result;
   }
 
   //Rest call: /api/project/{id}
@@ -50,7 +53,8 @@ export class ProjectController {
     @Param('id', ParseIntPipe) id: number,
     @Body() project: UpdateProjectDTO,
   ): Observable<ProjectEntity | HttpException> {
-    return this.service.updateProject(id, project);
+    const result = this.service.updateProject(id, project);
+    return result;
   }
 
   //Rest call: /api/project/{id}

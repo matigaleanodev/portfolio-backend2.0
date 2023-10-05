@@ -25,13 +25,15 @@ export class HardSkillController {
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() skill: CreateHardSkillDTO): Observable<HardSkillEntity> {
-    return this.service.createSkill(skill);
+    const result = this.service.createSkill(skill);
+    return result;
   }
 
   //Rest call: /api/hard-skill
   @Get()
   getProjects(): Observable<HardSkillEntity[]> {
-    return this.service.getSkills();
+    const result = this.service.getSkills();
+    return result;
   }
 
   //Rest call: /api/hard-skill/{id}
@@ -40,7 +42,8 @@ export class HardSkillController {
   delete(
     @Param('id', ParseIntPipe) id: number,
   ): Observable<HardSkillEntity | HttpException> {
-    return this.service.deleteSkill(id);
+    const result = this.service.deleteSkill(id);
+    return result;
   }
 
   //Rest call: /api/hard-skill/{id}
@@ -50,7 +53,8 @@ export class HardSkillController {
     @Param('id', ParseIntPipe) id: number,
     @Body() skill: UpdateHardSkillDTO,
   ): Observable<HardSkillEntity | HttpException> {
-    return this.service.updateSkill(id, skill);
+    const result = this.service.updateSkill(id, skill);
+    return result;
   }
 
   //Rest call: /api/hard-skill/{id}
