@@ -42,7 +42,7 @@ export class ProfileService {
     );
   }
 
-  updateSkill(
+  updateProfile(
     id: number,
     profile: UpdateProfileDTO,
   ): Observable<ProfileEntity | HttpException> {
