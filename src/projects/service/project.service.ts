@@ -32,7 +32,7 @@ export class ProjectService {
           switchMap((nameExist) => {
             if (nameExist) {
               throw new HttpException(
-                'Skill name already exists',
+                'Projectname already exists',
                 HttpStatus.CONFLICT,
               );
             } else {
