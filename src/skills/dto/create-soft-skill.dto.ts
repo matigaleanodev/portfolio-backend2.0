@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsUrl } from 'class-validator';
 
 export class CreateSoftSkillDTO {
   @IsString()
@@ -12,4 +12,12 @@ export class CreateSoftSkillDTO {
   @IsUrl()
   @IsNotEmpty()
   image: string;
+
+  @IsNumber({
+    allowNaN: false,
+    allowInfinity: false,
+    maxDecimalPlaces: 0,
+  })
+  @IsNotEmpty()
+  profileId: number;
 }

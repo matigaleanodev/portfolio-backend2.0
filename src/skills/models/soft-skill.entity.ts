@@ -1,7 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { SofSkillInterface } from './soft-skill.interface';
+import { ProfileEntity } from 'src/profile/models/profile.entity';
 
-@Entity({ name: 'softSkills' })
+@Entity({ name: 'soft_skills' })
 export class SoftSkillEntity implements SofSkillInterface {
   @PrimaryGeneratedColumn()
   id: number;
@@ -14,4 +21,11 @@ export class SoftSkillEntity implements SofSkillInterface {
 
   @Column({ unique: true })
   image: string;
+
+  @ManyToOne(() => ProfileEntity, (profile) => profile.softSkills)
+  @JoinColumn({ name: 'profile_id' })
+  profile: ProfileEntity;
+
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 }

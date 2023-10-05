@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ContactModule } from './contact/contact.module';
 import { ProjectsModule } from './projects/projects.module';
 import { SkillsModule } from './skills/skills.module';
+import { ProfileModule } from './profile/profile.module';
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ dotenv.config();
     ContactModule,
     ProjectsModule,
     SkillsModule,
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

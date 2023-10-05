@@ -5,25 +5,46 @@ import { Repository } from 'typeorm';
 import { CreateProjectDTO } from '../dto/create-project.dto';
 import { Observable, from, map, of, switchMap } from 'rxjs';
 import { UpdateProjectDTO } from '../dto/update-project.dto';
+import { ProfileEntity } from 'src/profile/models/profile.entity';
 
 @Injectable()
 export class ProjectService {
   constructor(
     @InjectRepository(ProjectEntity)
     private projectRepository: Repository<ProjectEntity>,
+    @InjectRepository(ProfileEntity)
+    private profileRepository: Repository<ProfileEntity>,
   ) {}
 
   createProject(project: CreateProjectDTO): Observable<ProjectEntity> {
-    const newProject = this.projectRepository.create(project);
-    return from(this.projectRepository.save(newProject));
+    return from(
+      this.profileRepository.findOne({ where: { id: project.profileId } }),
+    ).pipe(
+      switchMap((foundProfile) => {
+        if (!foundProfile) {
+          throw new HttpException('Profile not found', HttpStatus.NOT_FOUND);
+        }
+        const newProject = this.projectRepository.create({
+          ...project,
+          profile: foundProfile,
+        });
+        return from(this.projectRepository.save(newProject)).pipe(
+          map((savedProject) => {
+            return savedProject;
+          }),
+        );
+      }),
+    );
   }
 
   getProjects(): Observable<ProjectEntity[]> {
-    return from(this.projectRepository.find());
+    return from(this.projectRepository.find({ relations: ['profile'] }));
   }
 
   getProjectById(id: number): Observable<ProjectEntity | HttpException> {
-    return from(this.projectRepository.findOne({ where: { id } })).pipe(
+    return from(
+      this.projectRepository.findOne({ where: { id }, relations: ['profile'] }),
+    ).pipe(
       map((foundProject) => {
         if (foundProject) {
           return foundProject;
@@ -52,7 +73,10 @@ export class ProjectService {
             switchMap(() => {
               // Obtiene el objeto actualizado
               return from(
-                this.projectRepository.findOne({ where: { id } }),
+                this.projectRepository.findOne({
+                  where: { id },
+                  relations: ['profile'],
+                }),
               ).pipe(
                 map((updatedProject) => {
                   if (updatedProject) {
@@ -80,6 +104,7 @@ export class ProjectService {
     return from(
       this.projectRepository.findOne({
         where: { id },
+        relations: ['profile'],
       }),
     ).pipe(
       switchMap((foundProject) => {

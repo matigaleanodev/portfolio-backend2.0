@@ -7,10 +7,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/auth/auth.module';
 import { HardSkillEntity } from './models/hard-skill.entity';
 import { SoftSkillEntity } from './models/soft-skill.entity';
+import { ProfileEntity } from 'src/profile/models/profile.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([HardSkillEntity, SoftSkillEntity]),
+    TypeOrmModule.forFeature([HardSkillEntity, SoftSkillEntity, ProfileEntity]),
     AuthModule,
   ],
   controllers: [HardSkillController, SoftSkillController],

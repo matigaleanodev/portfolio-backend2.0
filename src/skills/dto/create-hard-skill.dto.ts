@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsUrl } from 'class-validator';
+import { IsString, IsNotEmpty, IsUrl, IsNumber } from 'class-validator';
 
 export class CreateHardSkillDTO {
   @IsString()
@@ -16,4 +16,12 @@ export class CreateHardSkillDTO {
   @IsUrl()
   @IsNotEmpty()
   url: string;
+
+  @IsNumber({
+    allowNaN: false,
+    allowInfinity: false,
+    maxDecimalPlaces: 0,
+  })
+  @IsNotEmpty()
+  profileId: number;
 }

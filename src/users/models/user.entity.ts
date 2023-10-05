@@ -5,8 +5,11 @@ import {
   PrimaryGeneratedColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { UserInterface } from './user.interface';
+import { ProfileEntity } from 'src/profile/models/profile.entity';
 
 @Entity({ name: 'users' })
 export class UserEntity implements UserInterface {
@@ -21,6 +24,10 @@ export class UserEntity implements UserInterface {
 
   @Column({ select: false })
   password: string;
+
+  @OneToOne(() => ProfileEntity)
+  @JoinColumn({ name: 'profile_id' })
+  profile: ProfileEntity;
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

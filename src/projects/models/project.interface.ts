@@ -1,3 +1,5 @@
+import { ProfileEntity } from 'src/profile/models/profile.entity';
+
 export interface ProjectInterface {
   id: number;
   name: string;
@@ -6,5 +8,6 @@ export interface ProjectInterface {
   frontUrl: string;
   backUrl: string;
   demoUrl: string;
+  profile: ProfileEntity;
   createdAt: Date;
 }

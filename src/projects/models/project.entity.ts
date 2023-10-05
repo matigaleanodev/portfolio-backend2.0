@@ -1,5 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ProjectInterface } from './project.interface';
+import { ProfileEntity } from 'src/profile/models/profile.entity';
 
 @Entity({ name: 'projecs' })
 export class ProjectEntity implements ProjectInterface {
@@ -23,6 +30,10 @@ export class ProjectEntity implements ProjectInterface {
 
   @Column({ nullable: true })
   demoUrl: string;
+
+  @ManyToOne(() => ProfileEntity, (profile) => profile.projects)
+  @JoinColumn({ name: 'profile_id' })
+  profile: ProfileEntity;
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

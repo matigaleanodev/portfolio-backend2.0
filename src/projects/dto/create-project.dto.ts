@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsUrl } from 'class-validator';
 
 export class CreateProjectDTO {
   @IsString()
@@ -24,4 +24,12 @@ export class CreateProjectDTO {
   @IsUrl()
   @IsNotEmpty()
   demoUrl: string;
+
+  @IsNumber({
+    allowNaN: false,
+    allowInfinity: false,
+    maxDecimalPlaces: 0,
+  })
+  @IsNotEmpty()
+  profileId: number;
 }
