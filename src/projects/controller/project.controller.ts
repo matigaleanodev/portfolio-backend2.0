@@ -14,8 +14,8 @@ import { ProjectService } from '../service/project.service';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 import { CreateProjectDTO } from '../dto/create-project.dto';
 import { Observable } from 'rxjs';
-import { ProjectInterface } from '../models/project.interface';
 import { UpdateProjectDTO } from '../dto/update-project.dto';
+import { ProjectEntity } from '../models/project.entity';
 
 @Controller('project')
 export class ProjectController {
@@ -24,13 +24,13 @@ export class ProjectController {
   //Rest call: /api/project
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() project: CreateProjectDTO): Observable<ProjectInterface> {
+  create(@Body() project: CreateProjectDTO): Observable<ProjectEntity> {
     return this.service.createProject(project);
   }
 
   //Rest call: /api/project
   @Get()
-  getProjects(): Observable<ProjectInterface[]> {
+  getProjects(): Observable<ProjectEntity[]> {
     return this.service.getProjects();
   }
 
@@ -39,7 +39,7 @@ export class ProjectController {
   @Delete(':id')
   delete(
     @Param('id', ParseIntPipe) id: number,
-  ): Observable<ProjectInterface | HttpException> {
+  ): Observable<ProjectEntity | HttpException> {
     return this.service.deleteProject(id);
   }
 
@@ -49,7 +49,7 @@ export class ProjectController {
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() project: UpdateProjectDTO,
-  ): Observable<ProjectInterface | HttpException> {
+  ): Observable<ProjectEntity | HttpException> {
     return this.service.updateProject(id, project);
   }
 
@@ -57,7 +57,7 @@ export class ProjectController {
   @Get(':id')
   getProject(
     @Param('id', ParseIntPipe) id: number,
-  ): Observable<ProjectInterface | HttpException> {
+  ): Observable<ProjectEntity | HttpException> {
     const result = this.service.getProjectById(id);
     return result;
   }

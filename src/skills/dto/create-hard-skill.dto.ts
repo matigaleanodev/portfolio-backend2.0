@@ -1,6 +1,6 @@
 import { IsString, IsNotEmpty, IsUrl } from 'class-validator';
 
-export class CreateHardSkill {
+export class CreateHardSkillDTO {
   @IsString()
   @IsNotEmpty()
   name: string;
