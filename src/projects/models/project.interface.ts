@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export interface ProjectInterface {
   id: number;
   name: string;
