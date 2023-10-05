@@ -24,7 +24,7 @@ dotenv.config();
       database: process.env.DB_DATABASE,
       url: process.env.DB_URL,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: false,
     }),
     UsersModule,
     AuthModule,

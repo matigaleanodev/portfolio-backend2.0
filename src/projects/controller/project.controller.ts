@@ -37,8 +37,10 @@ export class ProjectController {
   //Rest call: /api/project/{id}
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe) id: number) {
-    this.service.deleteProject(id);
+  delete(
+    @Param('id', ParseIntPipe) id: number,
+  ): Observable<ProjectInterface | HttpException> {
+    return this.service.deleteProject(id);
   }
 
   //Rest call: /api/project/{id}
@@ -47,15 +49,16 @@ export class ProjectController {
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() project: UpdateProjectDTO,
-  ) {
-    this.service.updateProject(id, project);
+  ): Observable<ProjectInterface | HttpException> {
+    return this.service.updateProject(id, project);
   }
 
   //Rest call: /api/project/{id}
   @Get(':id')
   getProject(
     @Param('id', ParseIntPipe) id: number,
-  ): Promise<ProjectInterface | HttpException> {
-    return this.service.getProjectById(id);
+  ): Observable<ProjectInterface | HttpException> {
+    const result = this.service.getProjectById(id);
+    return result;
   }
 }
