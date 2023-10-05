@@ -1,6 +1,7 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { HardSkillInterface } from './hard-skill.interface';
 
+@Entity({ name: 'hardSkills' })
 export class HardSkillEntity implements HardSkillInterface {
   @PrimaryGeneratedColumn()
   id: number;
