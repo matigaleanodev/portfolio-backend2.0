@@ -28,9 +28,20 @@ export class ProjectService {
           ...project,
           profile: foundProfile,
         });
-        return from(this.projectRepository.save(newProject)).pipe(
-          map((savedProject) => {
-            return savedProject;
+        return from(this.nameExists(newProject.name)).pipe(
+          switchMap((nameExist) => {
+            if (nameExist) {
+              throw new HttpException(
+                'Skill name already exists',
+                HttpStatus.CONFLICT,
+              );
+            } else {
+              return from(this.projectRepository.save(newProject)).pipe(
+                map((savedProject) => {
+                  return savedProject;
+                }),
+              );
+            }
           }),
         );
       }),
@@ -119,6 +130,15 @@ export class ProjectService {
             new HttpException('Project not found', HttpStatus.NOT_FOUND),
           );
         }
+      }),
+    );
+  }
+
+  private nameExists(name: string): Observable<boolean> {
+    name = name.toLowerCase();
+    return from(this.projectRepository.findOne({ where: { name } })).pipe(
+      map((exist) => {
+        return exist ? true : false;
       }),
     );
   }

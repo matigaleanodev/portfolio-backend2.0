@@ -27,9 +27,20 @@ export class SoftSkillService {
           ...skill,
           profile: foundProfile,
         });
-        return from(this.skillRepository.save(newSkill)).pipe(
-          map((savedSkill) => {
-            return savedSkill;
+        return from(this.nameExists(newSkill.name)).pipe(
+          switchMap((nameExist) => {
+            if (nameExist) {
+              throw new HttpException(
+                'Skill name already exists',
+                HttpStatus.CONFLICT,
+              );
+            } else {
+              return from(this.skillRepository.save(newSkill)).pipe(
+                map((savedSkill) => {
+                  return savedSkill;
+                }),
+              );
+            }
           }),
         );
       }),
@@ -103,6 +114,15 @@ export class SoftSkillService {
         } else {
           return of(new HttpException('Skill not found', HttpStatus.NOT_FOUND));
         }
+      }),
+    );
+  }
+
+  private nameExists(name: string): Observable<boolean> {
+    name = name.toLowerCase();
+    return from(this.skillRepository.findOne({ where: { name } })).pipe(
+      map((exist) => {
+        return exist ? true : false;
       }),
     );
   }
