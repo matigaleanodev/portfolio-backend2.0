@@ -22,11 +22,11 @@ export class CreateHardSkillDTO {
   })
   type: 'frontend' | 'backend' | 'tool';
 
-  @IsUrl()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Skill image',
-    example: 'https://example.com/image.png',
+    example: 'image.png',
     required: true,
   })
   image: string;

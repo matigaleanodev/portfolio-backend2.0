@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateProfileDTO {
   @IsString()
@@ -18,11 +18,11 @@ export class CreateProfileDTO {
   })
   description: string;
 
-  @IsUrl()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Image of the profile',
-    example: 'https://example.com/image.jpg',
+    example: 'image.jpg',
   })
   image: string;
 }

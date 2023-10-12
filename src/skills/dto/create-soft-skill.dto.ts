@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSoftSkillDTO {
@@ -6,7 +6,7 @@ export class CreateSoftSkillDTO {
   @IsNotEmpty()
   @ApiProperty({
     description: 'Skill name',
-    example: 'Resilence',
+    example: 'Resilience',
     required: true,
   })
   name: string;
@@ -15,15 +15,15 @@ export class CreateSoftSkillDTO {
   @IsNotEmpty()
   @ApiProperty({
     description: 'Skill description',
-    example: 'Resilence is a skill that helps you to overcome obstacles.',
+    example: 'Resilience is a skill that helps you to overcome obstacles.',
   })
   description: string;
 
-  @IsUrl()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Skill image',
-    example: 'https://example.com/image.png',
+    example: 'image.png',
     required: true,
   })
   image: string;

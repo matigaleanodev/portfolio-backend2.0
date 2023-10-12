@@ -18,11 +18,11 @@ export class CreateProjectDTO {
   })
   description: string;
 
-  @IsUrl()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Image of the project',
-    example: 'https://example.com/image.jpg',
+    example: 'image.jpg',
   })
   image: string;
 
