@@ -32,8 +32,8 @@ export class CreateProjectDTO {
   })
   image: string;
 
-  @IsUrl()
   @IsOptional()
+  @IsUrl()
   @ApiProperty({
     description: 'Frontend repo url',
     example: 'https://github.com/user/repo',
@@ -42,8 +42,8 @@ export class CreateProjectDTO {
   })
   frontUrl: string;
 
-  @IsUrl()
   @IsOptional()
+  @IsUrl()
   @ApiProperty({
     description: 'Backend repo url',
     example: 'https://github.com/user/repo',
