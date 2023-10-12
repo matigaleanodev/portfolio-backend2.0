@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsNumber, IsString, IsUrl } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProjectDTO {
@@ -27,6 +33,7 @@ export class CreateProjectDTO {
   image: string;
 
   @IsUrl()
+  @IsOptional()
   @ApiProperty({
     description: 'Frontend repo url',
     example: 'https://github.com/user/repo',
@@ -36,6 +43,7 @@ export class CreateProjectDTO {
   frontUrl: string;
 
   @IsUrl()
+  @IsOptional()
   @ApiProperty({
     description: 'Backend repo url',
     example: 'https://github.com/user/repo',
