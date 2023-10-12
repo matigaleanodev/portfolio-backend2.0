@@ -16,7 +16,7 @@ export class HardSkillEntity implements HardSkillInterface {
   @Column({ unique: true })
   name: string;
 
-  @Column({ unique: true })
+  @Column()
   type: 'frontend' | 'backend' | 'tool';
 
   @Column({ unique: true })
