@@ -8,6 +8,8 @@ import { ContactModule } from './contact/contact.module';
 import { ProjectsModule } from './projects/projects.module';
 import { SkillsModule } from './skills/skills.module';
 import { ProfileModule } from './profile/profile.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 dotenv.config();
 
@@ -32,5 +34,7 @@ dotenv.config();
     SkillsModule,
     ProfileModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
