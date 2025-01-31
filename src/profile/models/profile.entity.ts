@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Index,
+  UpdateDateColumn,
+} from 'typeorm';
 import { ProfileInterface } from './profile.interface';
 import { ProjectEntity } from 'src/projects/models/project.entity';
 import { HardSkillEntity } from 'src/skills/models/hard-skill.entity';
@@ -10,26 +17,32 @@ export class ProfileEntity implements ProfileInterface {
   id: number;
 
   @Column()
+  @Index()
   name: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'varchar', length: 255 })
   description: string;
 
   @Column()
   image: string;
 
-  @OneToMany(() => SoftSkillEntity, (softskill) => softskill.profile)
+  @OneToMany(() => SoftSkillEntity, (softSkill) => softSkill.profile, {
+    eager: true,
+  })
   softSkills: SoftSkillEntity[];
 
-  @OneToMany(() => HardSkillEntity, (hardSkill) => hardSkill.profile)
+  @OneToMany(() => HardSkillEntity, (hardSkill) => hardSkill.profile, {
+    eager: true,
+  })
   hardSkills: HardSkillEntity[];
 
-  @OneToMany(() => ProjectEntity, (project) => project.profile)
+  @OneToMany(() => ProjectEntity, (project) => project.profile, { eager: true })
   projects: ProjectEntity[];
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Index()
   createdAt: Date;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   editedAt: Date;
 }
