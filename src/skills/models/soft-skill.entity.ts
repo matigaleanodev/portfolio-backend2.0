@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -22,6 +23,7 @@ export class SoftSkillEntity implements SofSkillInterface {
   @Column({ unique: true })
   image: string;
 
+  @Index()
   @ManyToOne(() => ProfileEntity, (profile) => profile.softSkills)
   @JoinColumn({ name: 'profile_id' })
   profile: ProfileEntity;

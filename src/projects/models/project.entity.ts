@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -31,6 +32,7 @@ export class ProjectEntity implements ProjectInterface {
   @Column({ nullable: true })
   demoUrl: string;
 
+  @Index()
   @ManyToOne(() => ProfileEntity, (profile) => profile.projects)
   @JoinColumn({ name: 'profile_id' })
   profile: ProfileEntity;

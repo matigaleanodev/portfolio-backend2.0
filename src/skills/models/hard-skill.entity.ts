@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -25,6 +26,7 @@ export class HardSkillEntity implements HardSkillInterface {
   @Column({ unique: true })
   url: string;
 
+  @Index()
   @ManyToOne(() => ProfileEntity, (profile) => profile.softSkills)
   @JoinColumn({ name: 'profile_id' })
   profile: ProfileEntity;
