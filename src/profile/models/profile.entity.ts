@@ -20,7 +20,7 @@ export class ProfileEntity implements ProfileInterface {
   @Index()
   name: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'text' })
   description: string;
 
   @Column()
