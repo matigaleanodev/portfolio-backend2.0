@@ -1,10 +1,33 @@
 {
-  "name": "portfolio",
-  "version": "1.2.0",
-  "description": "",
-  "author": "",
+  "name": "portfolio-backend",
+  "version": "2.2.0",
+  "description": "Backend para el portafolio de Matías Galeano, desarrollado con NestJS y MySQL, ofreciendo una API RESTful eficiente y segura.",
+  "author": "Matías Galeano",
   "private": true,
   "license": "UNLICENSED",
+  "keywords": [
+    "portfolio",
+    "matias galeano",
+    "nestjs",
+    "mysql",
+    "backend",
+    "api",
+    "rest api",
+    "nodejs",
+    "full-stack",
+    "web development",
+    "jwt",
+    "typeorm",
+    "authentication",
+    "authorization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matigaleanodev/portfolio-backend2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/matigaleanodev/portfolio-backend2.0/issues"
+  },
   "scripts": {
     "gcp-build": "",
     "build": "nest build",
