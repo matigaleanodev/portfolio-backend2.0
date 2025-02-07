@@ -5,7 +5,7 @@ import * as xmlbuilder from 'xmlbuilder';
 export class AppService {
   generateSitemapXML() {
     const root = xmlbuilder
-      .create('urlset', { version: '1.0', encoding: 'UTF-8' })
+      .create('urlset', { version: '2.0', encoding: 'UTF-8' })
       .att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
     // URL principal
@@ -13,7 +13,7 @@ export class AppService {
       .ele('url')
       .ele('loc', 'https://www.matiasgaleano.com.ar/')
       .up()
-      .ele('lastmod', '2023-10-23')
+      .ele('lastmod', '2025-07-02')
       .up()
       .ele('changefreq', 'daily')
       .up()
@@ -23,20 +23,20 @@ export class AppService {
     // Rutas adicionales
     const additionalRoutes = [
       {
-        url: 'https://www.matiasgaleano.com.ar/about-me',
-        lastmod: '2023-10-23',
+        url: 'https://www.matiasgaleano.com.ar/about',
+        lastmod: '2025-02-07',
         changefreq: 'monthly',
         priority: '0.8',
       },
       {
         url: 'https://www.matiasgaleano.com.ar/projects',
-        lastmod: '2023-10-23',
+        lastmod: '2025-02-07',
         changefreq: 'monthly',
         priority: '0.8',
       },
       {
         url: 'https://www.matiasgaleano.com.ar/contact',
-        lastmod: '2023-10-23',
+        lastmod: '2025-02-07',
         changefreq: 'monthly',
         priority: '0.8',
       },
