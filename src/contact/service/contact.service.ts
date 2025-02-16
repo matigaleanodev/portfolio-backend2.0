@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ContactEntity } from '../models/contact.entity';
 import { CreateContactDTO } from '../dto/create-contact.dto';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { ContactInterface } from '../models/contact.interface';
 import { EmailService } from './email.service';
 
@@ -15,13 +15,13 @@ export class ContactService {
     private readonly emailService: EmailService,
   ) {}
 
-  async createContact(contact: CreateContactDTO): Promise<ContactInterface> {
+  createContact(contact: CreateContactDTO): Observable<ContactInterface> {
     const contactEntity = this.contactRepository.create(contact);
     const createContact = this.contactRepository.save(contactEntity);
 
-    await this.emailService.sendContactEmail(contact);
+    this.emailService.sendContactEmail(contact);
 
-    return createContact;
+    return from(createContact);
   }
 
   getContacts() {
