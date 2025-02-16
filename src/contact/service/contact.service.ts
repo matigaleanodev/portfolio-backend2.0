@@ -3,19 +3,25 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ContactEntity } from '../models/contact.entity';
 import { CreateContactDTO } from '../dto/create-contact.dto';
-import { Observable, from } from 'rxjs';
+import { from } from 'rxjs';
 import { ContactInterface } from '../models/contact.interface';
+import { EmailService } from './email.service';
 
 @Injectable()
 export class ContactService {
   constructor(
     @InjectRepository(ContactEntity)
-    private contactRepository: Repository<ContactEntity>,
+    private readonly contactRepository: Repository<ContactEntity>,
+    private readonly emailService: EmailService,
   ) {}
 
-  createContact(contact: CreateContactDTO): Observable<ContactInterface> {
+  async createContact(contact: CreateContactDTO): Promise<ContactInterface> {
     const contactEntity = this.contactRepository.create(contact);
-    return from(this.contactRepository.save(contactEntity));
+    const createContact = this.contactRepository.save(contactEntity);
+
+    await this.emailService.sendContactEmail(contact);
+
+    return createContact;
   }
 
   getContacts() {
