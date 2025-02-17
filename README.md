@@ -46,3 +46,13 @@ Esta aplicación utiliza una **API** que permite gestionar toda mi información 
 ### Contacto
 
 [![POST /contact](https://img.shields.io/badge/POST%20%2Fcontact-%23FFD700.svg?&style=flat&logo=python&logoColor=white)](#)
+
+## 📫 Contacto
+
+Puedes encontrarme en las siguientes plataformas:
+
+[![Email](https://img.shields.io/badge/Email-FFCA28?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contacto@matiasgaleano.com.ar)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/matigaleano.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matigaleanodev)
+
+¡Gracias por visitar mi portfolio! 😊
