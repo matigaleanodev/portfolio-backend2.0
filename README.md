@@ -1,73 +1,48 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 👨‍💻 Portfolio Personal
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+¡Bienvenido al repositorio de mi portfolio personal! 👋 Este proyecto está construido con **Angular**, **Ionic**, y **NestJS**. Aquí puedes ver todos mis proyectos, habilidades y un formulario de contacto. ¡Todo ello en una sola aplicación!
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Descripción
 
-## Description
+Esta aplicación utiliza una **API** que permite gestionar toda mi información personal, los proyectos en los que he trabajado, mis habilidades (tanto duras como blandas) y, además, ofrece un formulario de contacto para que los usuarios puedan ponerse en comunicación conmigo. Todo esto de manera eficiente y organizada en una sola aplicación. 🚀
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tecnologías
 
-## Installation
+[![NestJS](https://img.shields.io/badge/NestJS-%23E0234E.svg?&style=flat&logo=nestjs&logoColor=white)](https://nestjs.com)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?&style=flat&logo=mysql&logoColor=white)](https://www.mysql.com)
+[![TypeORM](https://img.shields.io/badge/TypeORM-%23E0234E.svg?&style=flat&logo=typeorm&logoColor=white)](https://typeorm.io)
+[![JWT](https://img.shields.io/badge/JWT-%23E4A159.svg?&style=flat&logo=JSON-web-tokens&logoColor=white)](https://jwt.io)
+[![Bcrypt](https://img.shields.io/badge/Bcrypt-%23D04E7F.svg?&style=flat&logo=python&logoColor=white)](https://www.npmjs.com/package/bcrypt)
+[![Swagger](https://img.shields.io/badge/Swagger-%237D828B.svg?&style=flat&logo=swagger&logoColor=white)](https://swagger.io)
 
-```bash
-$ npm install
-```
+## Rutas
 
-## Running the app
+### Autenticación
 
-```bash
-# development
-$ npm run start
+[![POST /auth/login](https://img.shields.io/badge/POST%20%2Fauth%2Flogin-%23E4A159.svg?&style=flat&logo=JSON-web-tokens&logoColor=white)](https://jwt.io)
 
-# watch mode
-$ npm run start:dev
+### Perfil
 
-# production mode
-$ npm run start:prod
-```
+[![GET /profile](https://img.shields.io/badge/GET%20%2Fprofile-%23E0234E.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![POST /profile](https://img.shields.io/badge/POST%20%2Fprofile-%23FFD700.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![PUT /profile](https://img.shields.io/badge/PUT%20%2Fprofile-%2332CD32.svg?&style=flat&logo=nestjs&logoColor=white)](#)
 
-## Test
+### Proyectos
 
-```bash
-# unit tests
-$ npm run test
+[![GET /projects](https://img.shields.io/badge/GET%20%2Fprojects-%23E0234E.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![POST /projects](https://img.shields.io/badge/POST%20%2Fprojects-%23FFD700.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![PUT /projects/:id](https://img.shields.io/badge/PUT%20%2Fprojects%2F%3Aid-%2332CD32.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![DELETE /projects/:id](https://img.shields.io/badge/DELETE%20%2Fprojects%2F%3Aid-%23FF6347.svg?&style=flat&logo=nestjs&logoColor=white)](#)
 
-# e2e tests
-$ npm run test:e2e
+### Habilidades
 
-# test coverage
-$ npm run test:cov
-```
+[![GET /skills/hard](https://img.shields.io/badge/GET%20%2Fskills%2Fhard-%23E0234E.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![GET /skills/soft](https://img.shields.io/badge/GET%20%2Fskills%2Fsoft-%23E0234E.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![POST /skills/hard](https://img.shields.io/badge/POST%20%2Fskills%2Fhard-%23FFD700.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![POST /skills/soft](https://img.shields.io/badge/POST%20%2Fskills%2Fsoft-%23FFD700.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![PUT /skills/hard/:id](https://img.shields.io/badge/PUT%20%2Fskills%2Fhard%2F%3Aid-%2332CD32.svg?&style=flat&logo=nestjs&logoColor=white)](#)
+[![PUT /skills/soft/:id](https://img.shields.io/badge/PUT%20%2Fskills%2Fsoft%2F%3Aid-%2332CD32.svg?&style=flat&logo=nestjs&logoColor=white)](#)
 
-## Support
+### Contacto
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+[![POST /contact](https://img.shields.io/badge/POST%20%2Fcontact-%23FFD700.svg?&style=flat&logo=python&logoColor=white)](#)
