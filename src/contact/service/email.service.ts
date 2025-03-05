@@ -21,12 +21,13 @@ export class EmailService {
     try {
       const EMAIL = this.configService.get('EMAIL');
       const response = await this.resend.emails.send({
-        from: 'contacto@matiasgaleano.com',
-        to: EMAIL,
+        from: 'Contacto <contacto@matiasgaleano.com.ar>',
+        to: [EMAIL],
         subject: `Nuevo mensaje de ${contact.name}`,
         text: `Email: ${contact.email}\nMensaje: ${contact.message}`,
       });
 
+      console.log('Respuesta de Resend:', response);
       return response;
     } catch (error) {
       console.error('Error enviando email:', error);
