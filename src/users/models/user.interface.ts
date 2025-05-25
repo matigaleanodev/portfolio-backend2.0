@@ -5,5 +5,6 @@ export interface UserInterface {
   email: string;
   password?: string;
   profile: ProfileInterface;
+  refreshToken: string | null;
   createdAt: Date;
 }
