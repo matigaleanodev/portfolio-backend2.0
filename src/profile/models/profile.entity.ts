@@ -43,6 +43,10 @@ export class ProfileEntity implements ProfileInterface {
   @Index()
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
   editedAt: Date;
 }
